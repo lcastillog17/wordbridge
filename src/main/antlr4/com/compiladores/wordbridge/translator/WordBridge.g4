@@ -6,11 +6,14 @@ text: (paragraph (new_line paragraph)* new_line*)?;
 // Regla inicial para reconocer un párrafo
 paragraph: new_line* sentence (sentence)*;
 
-// Regla para reconocer una oración afirmativa simple
-sentence: statement;
+// Regla para reconocer una oración
+sentence: statement | question;
 
 // Regla para reconocer una oración afirmativa
-statement: subject predicate? dot? white_space?; 
+statement: subject predicate? dot? white_space?;
+
+// Regla para reconocer una pregunta
+question: open_question? pronoun (predicate? white_space? subject? | subject? white_space? predicate?) close_question white_space?;
 
 // Reglas para reconocer cada uno de los elementos de la oración
 subject: (article white_space)? noun (white_space adjective)?;
@@ -32,11 +35,13 @@ conjunction: COORDINATING_CONJUNCTION | SUBORDINANT_CONJUNCTION;
 interjection: INTERJECTION;
 contraction: CONTRACTION;
 dot: DOT;
+open_question: OPEN_QUESTION;
+close_question: CLOSE_QUESTION;
 new_line: NEW_LINE;
 white_space: WHITE_SPACE;
 
 // SUSTANTIVOS
-NOUN: 'tiempo' | 'persona' | 'año' | 'día' | 'manera' | 'país' | 'vida' | 'mano' | 'parte' | 'caso' | 'grupo' | 'problema' | 'hecho' | 'sistema' | 'lugar' | 'trabajo' | 'manera' | 'programa' | 'historia' | 'juego' | 'familia' | 'gobierno' | 'compañía' | 'número' | 'sistema' | 'semana' | 'empresa' | 'punto' | 'casa' | 'país' | 'historia' | 'partido' | 'información' | 'universidad' | 'ciudad' | 'equipo' | 'mercado' | 'manera' | 'nivel' | 'lugar' | 'plan' | 'proceso' | 'servicio' | 'estudio' | 'vida' | 'medio' | 'razón' | 'momento' | 'persona' | 'lugar';
+NOUN: 'perro' | 'gato' | 'tiempo' | 'persona' | 'año' | 'día' | 'manera' | 'país' | 'vida' | 'mano' | 'parte' | 'caso' | 'grupo' | 'problema' | 'hecho' | 'sistema' | 'lugar' | 'trabajo' | 'manera' | 'programa' | 'historia' | 'juego' | 'familia' | 'gobierno' | 'compañía' | 'número' | 'sistema' | 'semana' | 'empresa' | 'punto' | 'casa' | 'país' | 'historia' | 'partido' | 'información' | 'universidad' | 'ciudad' | 'equipo' | 'mercado' | 'manera' | 'nivel' | 'lugar' | 'plan' | 'proceso' | 'servicio' | 'estudio' | 'vida' | 'medio' | 'razón' | 'momento' | 'persona' | 'lugar';
 
 // ADJETIVOS
 POSSESSIVE_ADJECTIVE: 'mi' | 'tu' | 'su' | 'nuestro' | 'nuestra' | 'vuestro' | 'vuestra' | 'su';
@@ -54,7 +59,7 @@ INDEFINITE_ARTICLE: 'un' | 'una' | 'unos' | 'unas';
 PERSONAL_PRONOUN: 'yo' | 'tú' | 'él' | 'ella' | 'usted' | 'nosotros' | 'nosotras' | 'vosotros' | 'vosotras' | 'ellos' | 'ellas' | 'ustedes';
 NUMERAL_PRONOUN: 'uno' | 'una' | 'dos' | 'tres' | 'cuántos' | 'cuántas';
 DEMOSTRATIVE_PRONOUN: 'este' | 'esta' | 'ese' | 'esa' | 'aquel' | 'aquella' | 'estos' | 'estas' | 'esos' | 'esas' | 'aquellos' | 'aquellas';
-INTERROGATIVE_PRONOUN: 'quién' | 'quienes' | 'qué' | 'cuál' | 'cuáles' | 'cuánto' | 'cuánta';
+INTERROGATIVE_PRONOUN: 'quién' | 'quienes' | 'qué' | 'cuál' | 'cuáles' | 'cuánto' | 'cuánta' | 'cuántos' | 'cuántas' | 'cómo' | 'cuándo' | 'dónde' | 'por qué' | 'para qué';
 
 // VERBOS
 PRESENT_TENSE_VERB:
@@ -87,6 +92,10 @@ INTERJECTION: '¡hola!' | '¡adiós!' | '¡ay!' | '¡ah!' | '¡oh!' | '¡uf!' | 
 CONTRACTION: 'al' | 'del';
 
 DOT: '.';
+
+OPEN_QUESTION: '¿';
+
+CLOSE_QUESTION: '?';
 
 NEW_LINE: '\r'? '\n';
 

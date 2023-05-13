@@ -16,7 +16,7 @@ public class WordBridgeCustomSpanishToEnglishTranslator implements WordBridgeCus
 		
 		for (int i = sentence.length() - 1; i >= 0; i--) {
 			char currentChar = sentence.charAt(i);
-			if (currentChar == ' ' || currentChar == '.') {
+			if (currentChar == ' ' || currentChar == '.' || currentChar == '¿' || currentChar == '?') {
 				sentenceEnd = currentChar + sentenceEnd;
 			} else {
 				break;
@@ -27,22 +27,32 @@ public class WordBridgeCustomSpanishToEnglishTranslator implements WordBridgeCus
 		
 		return fullTranslation;
 	}
+	
+	private String translateSentence(String[] words) {
+		return Arrays
+	    		.asList(words)
+	    		.stream()
+	    	    .map(dictionary::getTranslation)
+	    	    .collect(Collectors.joining(" "));
+	}
 
 	@Override
 	public String translateStatement(String statement) {
 	    String[] words = statement.split("[\\s\\.]+");
 
-	    String translation = Arrays
-	    		.asList(words)
-	    		.stream()
-	    	    .map(dictionary::getTranslation)
-	    	    .collect(Collectors.joining(" "));
-	    
+	    String translation = translateSentence(words);
+
 	    return getFullTranslation(statement, translation);
 	}
-	
+
 	@Override
 	public String translateQuestion(String question) {
-		return question;
+	    String[] words = question.split("[\\s\\¿\\?]+");
+
+	    String translation = translateSentence(words);
+
+	    return getFullTranslation(question, translation);
 	}
+	
+	
 }

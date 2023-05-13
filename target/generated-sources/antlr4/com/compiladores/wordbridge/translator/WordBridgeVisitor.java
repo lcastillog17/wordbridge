@@ -35,6 +35,12 @@ public interface WordBridgeVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStatement(WordBridgeParser.StatementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link WordBridgeParser#question}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitQuestion(WordBridgeParser.QuestionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link WordBridgeParser#subject}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -118,6 +124,18 @@ public interface WordBridgeVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitDot(WordBridgeParser.DotContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link WordBridgeParser#open_question}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOpen_question(WordBridgeParser.Open_questionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link WordBridgeParser#close_question}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClose_question(WordBridgeParser.Close_questionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link WordBridgeParser#new_line}.
 	 * @param ctx the parse tree

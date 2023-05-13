@@ -14,6 +14,8 @@ import com.compiladores.wordbridge.translator.WordBridgeParser.InterjectionConte
 import com.compiladores.wordbridge.translator.WordBridgeParser.NounContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.ParagraphContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.PrepositionContext;
+import com.compiladores.wordbridge.translator.WordBridgeParser.PronounContext;
+import com.compiladores.wordbridge.translator.WordBridgeParser.QuestionContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.SentenceContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.StatementContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.TextContext;
@@ -44,7 +46,11 @@ public class WordBridgeCustomVisitor extends WordBridgeBaseVisitor<String> {
 				if (sentence.statement() != null) {
 					StatementContext statement = sentence.statement();
 					translation = translator.translateStatement(statement.getText());
+				} else if (sentence.question() != null) {
+					QuestionContext question = sentence.question();
+					translation = translator.translateQuestion(question.getText());
 				}
+				
 				// Agregar la traduccion a la lista
 				sentences.add(translation);
 			}
@@ -74,6 +80,14 @@ public class WordBridgeCustomVisitor extends WordBridgeBaseVisitor<String> {
 		String lexema = String.valueOf(ctx.getText());
 		symbolsTable.addSymbol(new String[] {token, lexema});
 		return super.visitArticle(ctx);
+	}
+	
+	@Override
+	public String visitPronoun(PronounContext ctx) {
+		String token = "Pronombre";
+		String lexema = String.valueOf(ctx.getText());
+		symbolsTable.addSymbol(new String[] {token, lexema});
+		return super.visitPronoun(ctx);
 	}
 
 	@Override

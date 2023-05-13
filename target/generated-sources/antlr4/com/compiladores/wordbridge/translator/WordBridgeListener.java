@@ -48,6 +48,16 @@ public interface WordBridgeListener extends ParseTreeListener {
 	 */
 	void exitStatement(WordBridgeParser.StatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link WordBridgeParser#question}.
+	 * @param ctx the parse tree
+	 */
+	void enterQuestion(WordBridgeParser.QuestionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link WordBridgeParser#question}.
+	 * @param ctx the parse tree
+	 */
+	void exitQuestion(WordBridgeParser.QuestionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link WordBridgeParser#subject}.
 	 * @param ctx the parse tree
 	 */
@@ -187,6 +197,26 @@ public interface WordBridgeListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDot(WordBridgeParser.DotContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link WordBridgeParser#open_question}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpen_question(WordBridgeParser.Open_questionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link WordBridgeParser#open_question}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpen_question(WordBridgeParser.Open_questionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link WordBridgeParser#close_question}.
+	 * @param ctx the parse tree
+	 */
+	void enterClose_question(WordBridgeParser.Close_questionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link WordBridgeParser#close_question}.
+	 * @param ctx the parse tree
+	 */
+	void exitClose_question(WordBridgeParser.Close_questionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link WordBridgeParser#new_line}.
 	 * @param ctx the parse tree

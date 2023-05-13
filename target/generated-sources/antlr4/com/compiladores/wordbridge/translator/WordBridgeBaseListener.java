@@ -64,6 +64,18 @@ public class WordBridgeBaseListener implements WordBridgeListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterQuestion(WordBridgeParser.QuestionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitQuestion(WordBridgeParser.QuestionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterSubject(WordBridgeParser.SubjectContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -227,6 +239,30 @@ public class WordBridgeBaseListener implements WordBridgeListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDot(WordBridgeParser.DotContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOpen_question(WordBridgeParser.Open_questionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOpen_question(WordBridgeParser.Open_questionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterClose_question(WordBridgeParser.Close_questionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitClose_question(WordBridgeParser.Close_questionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
