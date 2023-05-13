@@ -17,6 +17,8 @@ public class App extends JFrame {
 	private static JTable tableSymbol;
     private static JTable tableError;
     
+	private final String DICTIONARY_PATH = "Diccionario.csv";
+    
     private final String[] SYMBOL_TABLE_COLUMNS = {"ID", "Token", "Lexema"};
     private final String[] ERROR_TABLE_COLUMNS = {"Linea", "Columna", "Mensaje"};
     
@@ -159,11 +161,14 @@ public class App extends JFrame {
 	    // Se crea un objeto para la tabla de simbolos
 	    WordBridgeCustomSymbolsTable symbolsTable = new WordBridgeCustomSymbolsTable();
 	    
+	    // Se crea el dictionario correspondiente, se carga el diccionario en memoria y luego se crea el traductor
+	    WordBridgeCustomDictionary spanishToEnglishDictionary = new WordBridgeCustomDictionary(DICTIONARY_PATH);
+	    spanishToEnglishDictionary.loadDictionary();
+	    WordBridgeCustomTranslator spanishToEnglishTranslator = new WordBridgeCustomSpanishToEnglishTranslator(spanishToEnglishDictionary);
+	    
     	// Se crea un WordBridgeCustomVisitor para visitar el arbol de parseo y generar el codigo de salida
-    	WordBridgeCustomVisitor visitor = new WordBridgeCustomVisitor(symbolsTable);
-
-    	// Se visita el arbol de parseo con el WordBridgeCustomVisitor
-    	visitor.visit(tree);
+    	WordBridgeCustomVisitor visitor = new WordBridgeCustomVisitor(spanishToEnglishTranslator, symbolsTable);
+    	String translation = visitor.visit(tree);
     	
     	// Se muestra la tabla de simbolos en una tabla grafica
     	Object[][] tableSymbolData = symbolsTable.getSymbolsTable();
@@ -174,11 +179,11 @@ public class App extends JFrame {
 	    if (errorsTable.hasErrors()) {
 	    	tableError.setModel(new DefaultTableModel(tableErrorData, ERROR_TABLE_COLUMNS));	    	
 	    } else {
-	    	tableError.setModel(EMPTY_ERROR_TABLE_MODEL);	
+	    	tableError.setModel(EMPTY_ERROR_TABLE_MODEL);
 	    }
-    	
+
     	// Se muestra la traduccion en el area de texto de salida
-    	textAreaOutput.setText(inputCode);
+    	textAreaOutput.setText(translation);
     	
     }
 

@@ -53,17 +53,11 @@ public interface WordBridgeVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitObject(WordBridgeParser.ObjectContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link WordBridgeParser#verb}.
+	 * Visit a parse tree produced by {@link WordBridgeParser#noun}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVerb(WordBridgeParser.VerbContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link WordBridgeParser#article}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitArticle(WordBridgeParser.ArticleContext ctx);
+	T visitNoun(WordBridgeParser.NounContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link WordBridgeParser#adjective}.
 	 * @param ctx the parse tree
@@ -71,11 +65,23 @@ public interface WordBridgeVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAdjective(WordBridgeParser.AdjectiveContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link WordBridgeParser#noun}.
+	 * Visit a parse tree produced by {@link WordBridgeParser#article}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNoun(WordBridgeParser.NounContext ctx);
+	T visitArticle(WordBridgeParser.ArticleContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link WordBridgeParser#pronoun}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPronoun(WordBridgeParser.PronounContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link WordBridgeParser#verb}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVerb(WordBridgeParser.VerbContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link WordBridgeParser#adverb}.
 	 * @param ctx the parse tree

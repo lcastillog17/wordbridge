@@ -100,25 +100,13 @@ public class WordBridgeBaseListener implements WordBridgeListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVerb(WordBridgeParser.VerbContext ctx) { }
+	@Override public void enterNoun(WordBridgeParser.NounContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVerb(WordBridgeParser.VerbContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterArticle(WordBridgeParser.ArticleContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitArticle(WordBridgeParser.ArticleContext ctx) { }
+	@Override public void exitNoun(WordBridgeParser.NounContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -136,13 +124,37 @@ public class WordBridgeBaseListener implements WordBridgeListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNoun(WordBridgeParser.NounContext ctx) { }
+	@Override public void enterArticle(WordBridgeParser.ArticleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNoun(WordBridgeParser.NounContext ctx) { }
+	@Override public void exitArticle(WordBridgeParser.ArticleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPronoun(WordBridgeParser.PronounContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPronoun(WordBridgeParser.PronounContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVerb(WordBridgeParser.VerbContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVerb(WordBridgeParser.VerbContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

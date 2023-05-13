@@ -1,6 +1,9 @@
 
 package com.compiladores.wordbridge.translator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.compiladores.wordbridge.translator.WordBridgeParser.AdjectiveContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.AdverbContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.ArticleContext;
@@ -9,68 +12,56 @@ import com.compiladores.wordbridge.translator.WordBridgeParser.ContractionContex
 import com.compiladores.wordbridge.translator.WordBridgeParser.DotContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.InterjectionContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.NounContext;
-import com.compiladores.wordbridge.translator.WordBridgeParser.ObjectContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.ParagraphContext;
-import com.compiladores.wordbridge.translator.WordBridgeParser.PredicateContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.PrepositionContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.SentenceContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.StatementContext;
-import com.compiladores.wordbridge.translator.WordBridgeParser.SubjectContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.TextContext;
 import com.compiladores.wordbridge.translator.WordBridgeParser.VerbContext;
 
-public class WordBridgeCustomVisitor extends WordBridgeBaseVisitor<Void> {
+public class WordBridgeCustomVisitor extends WordBridgeBaseVisitor<String> {
 
-	private WordBridgeCustomSymbolsTable symbolsTable = new WordBridgeCustomSymbolsTable();
+	private WordBridgeCustomTranslator translator;
+	private WordBridgeCustomSymbolsTable symbolsTable;
 	
-	public WordBridgeCustomVisitor(WordBridgeCustomSymbolsTable symbolsTable) {
+	public WordBridgeCustomVisitor(WordBridgeCustomTranslator translator, WordBridgeCustomSymbolsTable symbolsTable) {
+		this.translator = translator;
 		this.symbolsTable = symbolsTable;
 	}
 
 	@Override
-	public Void visitText(TextContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitText(ctx);
-	}
+	public String visitText(TextContext ctx) {
+		String translation = "";
+		List<String> sentences = new ArrayList<>();
+
+		// Recorrer los parrafos del texto
+		for (ParagraphContext paragraph : ctx.paragraph()) {
+
+			// Recorrer las oraciones del parrafo
+			for (SentenceContext sentence : paragraph.sentence()) {
+				
+				// Verificar si se trata de una afirmacion
+				if (sentence.statement() != null) {
+					StatementContext statement = sentence.statement();
+					translation = translator.translateStatement(statement.getText());
+				}
+				// Agregar la traduccion a la lista
+				sentences.add(translation);
+			}
+			
+			// Verificar si hay un salto de linea
+			if (paragraph.new_line() != null) {
+				sentences.add("\n");
+			}
+	    }
+		
+	    String paragraphs = String.join("", sentences);
+	    super.visitText(ctx);
+	    return paragraphs;
+    }
 
 	@Override
-	public Void visitParagraph(ParagraphContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitParagraph(ctx);
-	}
-
-	@Override
-	public Void visitSentence(SentenceContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitSentence(ctx);
-	}
-
-	@Override
-	public Void visitStatement(StatementContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitStatement(ctx);
-	}
-
-	@Override
-	public Void visitSubject(SubjectContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitSubject(ctx);
-	}
-
-	@Override
-	public Void visitPredicate(PredicateContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitPredicate(ctx);
-	}
-
-	@Override
-	public Void visitObject(ObjectContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitObject(ctx);
-	}
-
-	@Override
-	public Void visitVerb(VerbContext ctx) {
+	public String visitVerb(VerbContext ctx) {
 		String token = "Verbo";
 		String lexema = String.valueOf(ctx.getText());
 		symbolsTable.addSymbol(new String[] {token, lexema});
@@ -78,7 +69,7 @@ public class WordBridgeCustomVisitor extends WordBridgeBaseVisitor<Void> {
 	}
 
 	@Override
-	public Void visitArticle(ArticleContext ctx) {
+	public String visitArticle(ArticleContext ctx) {
 		String token = "Articulo";
 		String lexema = String.valueOf(ctx.getText());
 		symbolsTable.addSymbol(new String[] {token, lexema});
@@ -86,7 +77,7 @@ public class WordBridgeCustomVisitor extends WordBridgeBaseVisitor<Void> {
 	}
 
 	@Override
-	public Void visitAdjective(AdjectiveContext ctx) {
+	public String visitAdjective(AdjectiveContext ctx) {
 		String token = "Adjetivo";
 		String lexema = String.valueOf(ctx.getText());
 		symbolsTable.addSymbol(new String[] {token, lexema});
@@ -94,7 +85,7 @@ public class WordBridgeCustomVisitor extends WordBridgeBaseVisitor<Void> {
 	}
 
 	@Override
-	public Void visitNoun(NounContext ctx) {
+	public String visitNoun(NounContext ctx) {
 		String token = "Sustantivo";
 		String lexema = String.valueOf(ctx.getText());
 		symbolsTable.addSymbol(new String[] {token, lexema});
@@ -102,7 +93,7 @@ public class WordBridgeCustomVisitor extends WordBridgeBaseVisitor<Void> {
 	}
 
 	@Override
-	public Void visitAdverb(AdverbContext ctx) {
+	public String visitAdverb(AdverbContext ctx) {
 		String token = "Adverbio";
 		String lexema = String.valueOf(ctx.getText());
 		symbolsTable.addSymbol(new String[] {token, lexema});
@@ -110,7 +101,7 @@ public class WordBridgeCustomVisitor extends WordBridgeBaseVisitor<Void> {
 	}
 
 	@Override
-	public Void visitPreposition(PrepositionContext ctx) {
+	public String visitPreposition(PrepositionContext ctx) {
 		String token = "Preposicion";
 		String lexema = String.valueOf(ctx.getText());
 		symbolsTable.addSymbol(new String[] {token, lexema});
@@ -118,7 +109,7 @@ public class WordBridgeCustomVisitor extends WordBridgeBaseVisitor<Void> {
 	}
 
 	@Override
-	public Void visitConjunction(ConjunctionContext ctx) {
+	public String visitConjunction(ConjunctionContext ctx) {
 		String token = "Conjuncion";
 		String lexema = String.valueOf(ctx.getText());
 		symbolsTable.addSymbol(new String[] {token, lexema});
@@ -126,7 +117,7 @@ public class WordBridgeCustomVisitor extends WordBridgeBaseVisitor<Void> {
 	}
 
 	@Override
-	public Void visitInterjection(InterjectionContext ctx) {
+	public String visitInterjection(InterjectionContext ctx) {
 		String token = "Interjeccion";
 		String lexema = String.valueOf(ctx.getText());
 		symbolsTable.addSymbol(new String[] {token, lexema});
@@ -134,7 +125,7 @@ public class WordBridgeCustomVisitor extends WordBridgeBaseVisitor<Void> {
 	}
 
 	@Override
-	public Void visitContraction(ContractionContext ctx) {
+	public String visitContraction(ContractionContext ctx) {
 		String token = "Contraccion";
 		String lexema = String.valueOf(ctx.getText());
 		symbolsTable.addSymbol(new String[] {token, lexema});
@@ -142,7 +133,7 @@ public class WordBridgeCustomVisitor extends WordBridgeBaseVisitor<Void> {
 	}
 
 	@Override
-	public Void visitDot(DotContext ctx) {
+	public String visitDot(DotContext ctx) {
 		String token = "Punto";
 		String lexema = String.valueOf(ctx.getText());
 		symbolsTable.addSymbol(new String[] {token, lexema});

@@ -78,25 +78,15 @@ public interface WordBridgeListener extends ParseTreeListener {
 	 */
 	void exitObject(WordBridgeParser.ObjectContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link WordBridgeParser#verb}.
+	 * Enter a parse tree produced by {@link WordBridgeParser#noun}.
 	 * @param ctx the parse tree
 	 */
-	void enterVerb(WordBridgeParser.VerbContext ctx);
+	void enterNoun(WordBridgeParser.NounContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link WordBridgeParser#verb}.
+	 * Exit a parse tree produced by {@link WordBridgeParser#noun}.
 	 * @param ctx the parse tree
 	 */
-	void exitVerb(WordBridgeParser.VerbContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link WordBridgeParser#article}.
-	 * @param ctx the parse tree
-	 */
-	void enterArticle(WordBridgeParser.ArticleContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link WordBridgeParser#article}.
-	 * @param ctx the parse tree
-	 */
-	void exitArticle(WordBridgeParser.ArticleContext ctx);
+	void exitNoun(WordBridgeParser.NounContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link WordBridgeParser#adjective}.
 	 * @param ctx the parse tree
@@ -108,15 +98,35 @@ public interface WordBridgeListener extends ParseTreeListener {
 	 */
 	void exitAdjective(WordBridgeParser.AdjectiveContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link WordBridgeParser#noun}.
+	 * Enter a parse tree produced by {@link WordBridgeParser#article}.
 	 * @param ctx the parse tree
 	 */
-	void enterNoun(WordBridgeParser.NounContext ctx);
+	void enterArticle(WordBridgeParser.ArticleContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link WordBridgeParser#noun}.
+	 * Exit a parse tree produced by {@link WordBridgeParser#article}.
 	 * @param ctx the parse tree
 	 */
-	void exitNoun(WordBridgeParser.NounContext ctx);
+	void exitArticle(WordBridgeParser.ArticleContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link WordBridgeParser#pronoun}.
+	 * @param ctx the parse tree
+	 */
+	void enterPronoun(WordBridgeParser.PronounContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link WordBridgeParser#pronoun}.
+	 * @param ctx the parse tree
+	 */
+	void exitPronoun(WordBridgeParser.PronounContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link WordBridgeParser#verb}.
+	 * @param ctx the parse tree
+	 */
+	void enterVerb(WordBridgeParser.VerbContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link WordBridgeParser#verb}.
+	 * @param ctx the parse tree
+	 */
+	void exitVerb(WordBridgeParser.VerbContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link WordBridgeParser#adverb}.
 	 * @param ctx the parse tree
