@@ -10,6 +10,14 @@ import javax.swing.table.DefaultTableModel;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 
+import com.compiladores.wordbridge.translator.customtranslator.WordBridgeCustomSpanishToEnglishTranslator;
+import com.compiladores.wordbridge.translator.customtranslator.WordBridgeCustomTranslator;
+import com.compiladores.wordbridge.translator.errorhandling.WordBridgeCustomErrorsListener;
+import com.compiladores.wordbridge.translator.errorhandling.WordBridgeCustomErrorsTable;
+import com.compiladores.wordbridge.translator.symbolhandling.WordBridgeCustomSymbolsTable;
+import com.compiladores.wordbridge.translator.symbolhandling.WordBridgeCustomVisitor;
+import com.compiladores.wordbridge.translator.vocabulary.spanish.WordBridgeCustomSpanishDictionary;
+
 public class App extends JFrame {
 	
 	private static JTextArea textAreaInput;
@@ -162,7 +170,7 @@ public class App extends JFrame {
 	    WordBridgeCustomSymbolsTable symbolsTable = new WordBridgeCustomSymbolsTable();
 	    
 	    // Se crea el dictionario correspondiente, se carga el diccionario en memoria y luego se crea el traductor
-	    WordBridgeCustomDictionary spanishToEnglishDictionary = new WordBridgeCustomDictionary(DICTIONARY_PATH);
+	    WordBridgeCustomSpanishDictionary spanishToEnglishDictionary = new WordBridgeCustomSpanishDictionary(DICTIONARY_PATH);
 	    spanishToEnglishDictionary.loadDictionary();
 	    WordBridgeCustomTranslator spanishToEnglishTranslator = new WordBridgeCustomSpanishToEnglishTranslator(spanishToEnglishDictionary);
 	    
