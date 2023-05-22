@@ -27,7 +27,7 @@ object: (white_space adverb)? (white_space article)? (white_space noun)? (white_
 noun: NOUN;
 adjective: POSSESSIVE_ADJECTIVE | DEMONSTRATIVE_ADJECTIVE | QUALIFYING_ADJECTIVE | CARDINAL_ADJECTIVE | ORDINAL_ADJECTIVE | INDEFINITE_ADJECTIVE;
 article: DEFINITE_ARTICLE | INDEFINITE_ARTICLE;
-pronoun: PERSONAL_PRONOUN | NUMERAL_PRONOUN | DEMOSTRATIVE_PRONOUN | INTERROGATIVE_PRONOUN;
+pronoun: PERSONAL_PRONOUN | /*NUMERAL_PRONOUN |*/ DEMOSTRATIVE_PRONOUN | INTERROGATIVE_PRONOUN;
 verb: PRESENT_TENSE_VERB;
 adverb: TIME_ADVERB | PLACE_ADVERB | QUANTITY_ADVERB | MODE_ADVERB | AFFIRMATION_ADVERB | NEGATION_ADVERB | DOUBT_ADVERB;
 preposition: PREPOSITION;
@@ -57,7 +57,7 @@ INDEFINITE_ARTICLE: 'un' | 'una' | 'unos' | 'unas';
 
 // PRONOMBRES
 PERSONAL_PRONOUN: 'yo' | 'tú' | 'él' | 'ella' | 'usted' | 'nosotros' | 'nosotras' | 'vosotros' | 'vosotras' | 'ellos' | 'ellas' | 'ustedes';
-NUMERAL_PRONOUN: 'uno' | 'una' | 'dos' | 'tres' | 'cuántos' | 'cuántas';
+/*NUMERAL_PRONOUN: 'uno' | 'una' | 'dos' | 'tres' | 'cuántos' | 'cuántas';*/
 DEMOSTRATIVE_PRONOUN: 'este' | 'esta' | 'ese' | 'esa' | 'aquel' | 'aquella' | 'estos' | 'estas' | 'esos' | 'esas' | 'aquellos' | 'aquellas';
 INTERROGATIVE_PRONOUN: 'quién' | 'quienes' | 'qué' | 'cuál' | 'cuáles' | 'cuánto' | 'cuánta' | 'cuántos' | 'cuántas' | 'cómo' | 'cuándo' | 'dónde' | 'por qué' | 'para qué';
 
@@ -66,7 +66,7 @@ PRESENT_TENSE_VERB:
 // PRIMERA PERSONA
 'soy' | 'estoy' | 'tengo' | 'hago' | 'digo' | 'voy' | 'veo' | 'sé' | 'puedo' | 'pongo' | 'quiero' | 'vengo' | 'doy' | 'parezco' | 'llevo' | 'gusto' | 'oigo' | 'pienso' | 'salgo' | 'encuentro' | 'miro' | 'como' | 'vivo' | 'siento' | 'hablo' | 'sigo' | 'creo' | 'recibo' | 'juego' | 'trabajo' | 'escribo' | 'conozco' | 'dejo' | 'comienzo' | 'necesito' | 'estudio' | 'llevo' | 'cojo' | 'abro' | 'cierro' | 'llego' | 'termino' | 'camino' | 'pregunto' | 'escucho' | 'viajo' | 'compro' | 'entiendo' | 'espero' | 'llevo' |
 // TERCERA PERSONA
-'es' | 'está' | 'tiene' | 'hace' | 'dice' | 'va' | 've' | 'sabe' | 'puede' | 'pone' | 'quiere' | 'viene' | 'da' | 'parece' | 'lleva' | 'gusta' | 'oye' | 'piensa' | 'sale' | 'encuentra' | 'mira' | 'come' | 'vive' | 'siente' | 'habla' | 'sigue' | 'cree' | 'recibe' | 'juega' | 'trabaja' | 'escribe' | 'conoce' | 'deja' | 'comienza' | 'necesita' | 'estudia' | 'lleva' | 'coge' | 'abre' | 'cierra' | 'llega' | 'termina' | 'camina' | 'pregunta' | 'escucha' | 'viaja' | 'compra' | 'entiende' | 'espera' | 'lleva' |
+'es' | 'está' | 'tiene' | 'hace' | 'dice' | 'va' | 've' | 'sabe' | 'puede' | 'pone' | 'quiere' | 'viene' | 'da' | 'parece' | 'lleva' | 'gusta' | 'oye' | 'piensa' | 'sale' | 'encuentra' | 'mira' | 'come' | 'vive' | 'siente' | 'habla' | 'sigue' | 'cree' | 'recibe' | 'juega' | 'trabaja' | 'escribe' | 'conoce' | 'deja' | 'comienza' | 'necesita' | 'estudia' | 'lleva' | 'coge' | 'abre' | 'cierra' | 'llega' | 'termina' | 'camina' | 'pregunta' | 'escucha' | 'viaja' | 'compra' | 'entiende' | 'espera' | 'lleva'
 ;
 
 // ADVERBIOS

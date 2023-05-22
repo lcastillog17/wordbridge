@@ -2,10 +2,13 @@ package com.compiladores.wordbridge.translator.vocabulary.spanish;
 
 import java.util.HashMap;
 
-public abstract class WordBridgeCustomDictionary {
+import com.compiladores.wordbridge.translator.vocabulary.spanish.languages.Language;
+import com.compiladores.wordbridge.translator.vocabulary.spanish.word.Word;
+
+public abstract class WordBridgeCustomDictionary<T extends Language> {
 
 	protected String filePath;
-	protected HashMap<String, String> dictionary = new HashMap<>();
+	protected HashMap<String, T> dictionary = new HashMap<>();
 	
 	public WordBridgeCustomDictionary(String filePath) {
 		this.filePath = filePath;
@@ -17,11 +20,12 @@ public abstract class WordBridgeCustomDictionary {
 		this.filePath = filePath;
 	}
 	
-	public HashMap<String, String> getDictionary() {
+	public HashMap<String, T> getDictionary() {
 		return this.dictionary;
 	}
 	
-	public String getTranslation(String word) {
-		return this.getDictionary().getOrDefault(word, word);
+	@SuppressWarnings("unchecked")
+	public T getWordRecord(String word) {
+		return this.getDictionary().containsKey(word) ? this.getDictionary().get(word): (T) new Word(word);
 	}
 }

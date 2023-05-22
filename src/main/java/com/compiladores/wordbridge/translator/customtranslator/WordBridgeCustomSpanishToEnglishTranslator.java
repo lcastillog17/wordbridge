@@ -2,14 +2,15 @@ package com.compiladores.wordbridge.translator.customtranslator;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import com.compiladores.wordbridge.translator.vocabulary.spanish.word.Word;
 
 import com.compiladores.wordbridge.translator.vocabulary.spanish.WordBridgeCustomSpanishDictionary;
 
 public class WordBridgeCustomSpanishToEnglishTranslator implements WordBridgeCustomTranslator {
 
-	private WordBridgeCustomSpanishDictionary dictionary;
-	
-	public WordBridgeCustomSpanishToEnglishTranslator(WordBridgeCustomSpanishDictionary dictionary) {
+	private WordBridgeCustomSpanishDictionary<Word> dictionary;
+
+	public WordBridgeCustomSpanishToEnglishTranslator(WordBridgeCustomSpanishDictionary<Word> dictionary) {
 		this.dictionary = dictionary;
 	}
 	
@@ -34,13 +35,13 @@ public class WordBridgeCustomSpanishToEnglishTranslator implements WordBridgeCus
 		return Arrays
 	    		.asList(words)
 	    		.stream()
-	    	    .map(dictionary::getTranslation)
+	    	    .map(word -> dictionary.getWordRecord(word).getEnglishTranslation())
 	    	    .collect(Collectors.joining(" "));
 	}
 
 	@Override
 	public String translateStatement(String statement) {
-	    String[] words = statement.split("[\\s\\.]+");
+	    String[] words = statement.toLowerCase().split("[\\s\\.]+");
 
 	    String translation = translateSentence(words);
 
@@ -55,6 +56,5 @@ public class WordBridgeCustomSpanishToEnglishTranslator implements WordBridgeCus
 
 	    return getFullTranslation(question, translation);
 	}
-	
 	
 }

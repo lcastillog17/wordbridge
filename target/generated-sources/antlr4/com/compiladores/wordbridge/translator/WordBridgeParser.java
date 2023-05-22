@@ -19,12 +19,12 @@ public class WordBridgeParser extends Parser {
 	public static final int
 		NOUN=1, POSSESSIVE_ADJECTIVE=2, DEMONSTRATIVE_ADJECTIVE=3, QUALIFYING_ADJECTIVE=4, 
 		CARDINAL_ADJECTIVE=5, ORDINAL_ADJECTIVE=6, INDEFINITE_ADJECTIVE=7, DEFINITE_ARTICLE=8, 
-		INDEFINITE_ARTICLE=9, PERSONAL_PRONOUN=10, NUMERAL_PRONOUN=11, DEMOSTRATIVE_PRONOUN=12, 
-		INTERROGATIVE_PRONOUN=13, PRESENT_TENSE_VERB=14, TIME_ADVERB=15, PLACE_ADVERB=16, 
-		QUANTITY_ADVERB=17, MODE_ADVERB=18, AFFIRMATION_ADVERB=19, NEGATION_ADVERB=20, 
-		DOUBT_ADVERB=21, PREPOSITION=22, COORDINATING_CONJUNCTION=23, SUBORDINANT_CONJUNCTION=24, 
-		INTERJECTION=25, CONTRACTION=26, DOT=27, OPEN_QUESTION=28, CLOSE_QUESTION=29, 
-		NEW_LINE=30, WHITE_SPACE=31, UNRECOGNIZED=32;
+		INDEFINITE_ARTICLE=9, PERSONAL_PRONOUN=10, DEMOSTRATIVE_PRONOUN=11, INTERROGATIVE_PRONOUN=12, 
+		PRESENT_TENSE_VERB=13, TIME_ADVERB=14, PLACE_ADVERB=15, QUANTITY_ADVERB=16, 
+		MODE_ADVERB=17, AFFIRMATION_ADVERB=18, NEGATION_ADVERB=19, DOUBT_ADVERB=20, 
+		PREPOSITION=21, COORDINATING_CONJUNCTION=22, SUBORDINANT_CONJUNCTION=23, 
+		INTERJECTION=24, CONTRACTION=25, DOT=26, OPEN_QUESTION=27, CLOSE_QUESTION=28, 
+		NEW_LINE=29, WHITE_SPACE=30, UNRECOGNIZED=31;
 	public static final int
 		RULE_text = 0, RULE_paragraph = 1, RULE_sentence = 2, RULE_statement = 3, 
 		RULE_question = 4, RULE_subject = 5, RULE_predicate = 6, RULE_object = 7, 
@@ -42,15 +42,15 @@ public class WordBridgeParser extends Parser {
 	private static final String[] _LITERAL_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, "'.'", "'¿'", "'?'"
+		null, null, "'.'", "'¿'", "'?'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "NOUN", "POSSESSIVE_ADJECTIVE", "DEMONSTRATIVE_ADJECTIVE", "QUALIFYING_ADJECTIVE", 
 		"CARDINAL_ADJECTIVE", "ORDINAL_ADJECTIVE", "INDEFINITE_ADJECTIVE", "DEFINITE_ARTICLE", 
-		"INDEFINITE_ARTICLE", "PERSONAL_PRONOUN", "NUMERAL_PRONOUN", "DEMOSTRATIVE_PRONOUN", 
-		"INTERROGATIVE_PRONOUN", "PRESENT_TENSE_VERB", "TIME_ADVERB", "PLACE_ADVERB", 
-		"QUANTITY_ADVERB", "MODE_ADVERB", "AFFIRMATION_ADVERB", "NEGATION_ADVERB", 
-		"DOUBT_ADVERB", "PREPOSITION", "COORDINATING_CONJUNCTION", "SUBORDINANT_CONJUNCTION", 
+		"INDEFINITE_ARTICLE", "PERSONAL_PRONOUN", "DEMOSTRATIVE_PRONOUN", "INTERROGATIVE_PRONOUN", 
+		"PRESENT_TENSE_VERB", "TIME_ADVERB", "PLACE_ADVERB", "QUANTITY_ADVERB", 
+		"MODE_ADVERB", "AFFIRMATION_ADVERB", "NEGATION_ADVERB", "DOUBT_ADVERB", 
+		"PREPOSITION", "COORDINATING_CONJUNCTION", "SUBORDINANT_CONJUNCTION", 
 		"INTERJECTION", "CONTRACTION", "DOT", "OPEN_QUESTION", "CLOSE_QUESTION", 
 		"NEW_LINE", "WHITE_SPACE", "UNRECOGNIZED"
 	};
@@ -145,7 +145,7 @@ public class WordBridgeParser extends Parser {
 			{
 			setState(61);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NOUN) | (1L << DEFINITE_ARTICLE) | (1L << INDEFINITE_ARTICLE) | (1L << PERSONAL_PRONOUN) | (1L << NUMERAL_PRONOUN) | (1L << DEMOSTRATIVE_PRONOUN) | (1L << INTERROGATIVE_PRONOUN) | (1L << OPEN_QUESTION) | (1L << NEW_LINE))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NOUN) | (1L << DEFINITE_ARTICLE) | (1L << INDEFINITE_ARTICLE) | (1L << PERSONAL_PRONOUN) | (1L << DEMOSTRATIVE_PRONOUN) | (1L << INTERROGATIVE_PRONOUN) | (1L << OPEN_QUESTION) | (1L << NEW_LINE))) != 0)) {
 				{
 				setState(46);
 				paragraph();
@@ -255,7 +255,7 @@ public class WordBridgeParser extends Parser {
 			setState(73);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NOUN) | (1L << DEFINITE_ARTICLE) | (1L << INDEFINITE_ARTICLE) | (1L << PERSONAL_PRONOUN) | (1L << NUMERAL_PRONOUN) | (1L << DEMOSTRATIVE_PRONOUN) | (1L << INTERROGATIVE_PRONOUN) | (1L << OPEN_QUESTION))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NOUN) | (1L << DEFINITE_ARTICLE) | (1L << INDEFINITE_ARTICLE) | (1L << PERSONAL_PRONOUN) | (1L << DEMOSTRATIVE_PRONOUN) | (1L << INTERROGATIVE_PRONOUN) | (1L << OPEN_QUESTION))) != 0)) {
 				{
 				{
 				setState(70);
@@ -321,7 +321,6 @@ public class WordBridgeParser extends Parser {
 				}
 				break;
 			case PERSONAL_PRONOUN:
-			case NUMERAL_PRONOUN:
 			case DEMOSTRATIVE_PRONOUN:
 			case INTERROGATIVE_PRONOUN:
 			case OPEN_QUESTION:
@@ -964,7 +963,6 @@ public class WordBridgeParser extends Parser {
 
 	public static class PronounContext extends ParserRuleContext {
 		public TerminalNode PERSONAL_PRONOUN() { return getToken(WordBridgeParser.PERSONAL_PRONOUN, 0); }
-		public TerminalNode NUMERAL_PRONOUN() { return getToken(WordBridgeParser.NUMERAL_PRONOUN, 0); }
 		public TerminalNode DEMOSTRATIVE_PRONOUN() { return getToken(WordBridgeParser.DEMOSTRATIVE_PRONOUN, 0); }
 		public TerminalNode INTERROGATIVE_PRONOUN() { return getToken(WordBridgeParser.INTERROGATIVE_PRONOUN, 0); }
 		public PronounContext(ParserRuleContext parent, int invokingState) {
@@ -995,7 +993,7 @@ public class WordBridgeParser extends Parser {
 			{
 			setState(159);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PERSONAL_PRONOUN) | (1L << NUMERAL_PRONOUN) | (1L << DEMOSTRATIVE_PRONOUN) | (1L << INTERROGATIVE_PRONOUN))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PERSONAL_PRONOUN) | (1L << DEMOSTRATIVE_PRONOUN) | (1L << INTERROGATIVE_PRONOUN))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			} else {
 				consume();
@@ -1495,7 +1493,7 @@ public class WordBridgeParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\"\u00ba\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3!\u00ba\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\3\2\3\2\3"+
@@ -1509,7 +1507,7 @@ public class WordBridgeParser extends Parser {
 		"\n\3\13\3\13\3\f\3\f\3\r\3\r\3\16\3\16\3\17\3\17\3\20\3\20\3\21\3\21\3"+
 		"\22\3\22\3\23\3\23\3\24\3\24\3\25\3\25\3\26\3\26\3\27\3\27\3\30\3\30\3"+
 		"\30\2\2\31\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\2\7\3\2\4\t"+
-		"\3\2\n\13\3\2\f\17\3\2\21\27\3\2\31\32\u00ba\2?\3\2\2\2\4D\3\2\2\2\6P"+
+		"\3\2\n\13\3\2\f\16\3\2\20\26\3\2\30\31\u00ba\2?\3\2\2\2\4D\3\2\2\2\6P"+
 		"\3\2\2\2\bR\3\2\2\2\n]\3\2\2\2\f{\3\2\2\2\16\u0083\3\2\2\2\20\u008a\3"+
 		"\2\2\2\22\u009b\3\2\2\2\24\u009d\3\2\2\2\26\u009f\3\2\2\2\30\u00a1\3\2"+
 		"\2\2\32\u00a3\3\2\2\2\34\u00a5\3\2\2\2\36\u00a7\3\2\2\2 \u00a9\3\2\2\2"+
@@ -1540,13 +1538,13 @@ public class WordBridgeParser extends Parser {
 		"\u0097\5.\30\2\u0097\u0098\5\24\13\2\u0098\u009a\3\2\2\2\u0099\u0096\3"+
 		"\2\2\2\u0099\u009a\3\2\2\2\u009a\21\3\2\2\2\u009b\u009c\7\3\2\2\u009c"+
 		"\23\3\2\2\2\u009d\u009e\t\2\2\2\u009e\25\3\2\2\2\u009f\u00a0\t\3\2\2\u00a0"+
-		"\27\3\2\2\2\u00a1\u00a2\t\4\2\2\u00a2\31\3\2\2\2\u00a3\u00a4\7\20\2\2"+
-		"\u00a4\33\3\2\2\2\u00a5\u00a6\t\5\2\2\u00a6\35\3\2\2\2\u00a7\u00a8\7\30"+
+		"\27\3\2\2\2\u00a1\u00a2\t\4\2\2\u00a2\31\3\2\2\2\u00a3\u00a4\7\17\2\2"+
+		"\u00a4\33\3\2\2\2\u00a5\u00a6\t\5\2\2\u00a6\35\3\2\2\2\u00a7\u00a8\7\27"+
 		"\2\2\u00a8\37\3\2\2\2\u00a9\u00aa\t\6\2\2\u00aa!\3\2\2\2\u00ab\u00ac\7"+
-		"\33\2\2\u00ac#\3\2\2\2\u00ad\u00ae\7\34\2\2\u00ae%\3\2\2\2\u00af\u00b0"+
-		"\7\35\2\2\u00b0\'\3\2\2\2\u00b1\u00b2\7\36\2\2\u00b2)\3\2\2\2\u00b3\u00b4"+
-		"\7\37\2\2\u00b4+\3\2\2\2\u00b5\u00b6\7 \2\2\u00b6-\3\2\2\2\u00b7\u00b8"+
-		"\7!\2\2\u00b8/\3\2\2\2\32\66<?DKPTWZ]adgjmprv{\u0081\u008a\u008f\u0094"+
+		"\32\2\2\u00ac#\3\2\2\2\u00ad\u00ae\7\33\2\2\u00ae%\3\2\2\2\u00af\u00b0"+
+		"\7\34\2\2\u00b0\'\3\2\2\2\u00b1\u00b2\7\35\2\2\u00b2)\3\2\2\2\u00b3\u00b4"+
+		"\7\36\2\2\u00b4+\3\2\2\2\u00b5\u00b6\7\37\2\2\u00b6-\3\2\2\2\u00b7\u00b8"+
+		"\7 \2\2\u00b8/\3\2\2\2\32\66<?DKPTWZ]adgjmprv{\u0081\u008a\u008f\u0094"+
 		"\u0099";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
