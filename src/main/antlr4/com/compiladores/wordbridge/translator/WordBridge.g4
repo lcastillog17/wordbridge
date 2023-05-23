@@ -22,7 +22,7 @@ subject: (article white_space)? noun (white_space adjective)?;
 predicate: white_space verb object;
 
 // Regla para reconocer un objeto
-object: (white_space adverb)? (white_space article)? (white_space noun)? (white_space adjective)?;
+object: (white_space adverb (white_space adverb)?)? (white_space article)? (white_space noun)? (white_space adjective)?;
 
 noun: NOUN;
 adjective: POSSESSIVE_ADJECTIVE | DEMONSTRATIVE_ADJECTIVE | QUALIFYING_ADJECTIVE | CARDINAL_ADJECTIVE | ORDINAL_ADJECTIVE | INDEFINITE_ADJECTIVE;
@@ -41,7 +41,7 @@ new_line: NEW_LINE;
 white_space: WHITE_SPACE;
 
 // SUSTANTIVOS
-NOUN: 'perro' | 'gato' | 'tiempo' | 'persona' | 'año' | 'día' | 'manera' | 'país' | 'vida' | 'mano' | 'parte' | 'caso' | 'grupo' | 'problema' | 'hecho' | 'sistema' | 'lugar' | 'trabajo' | 'manera' | 'programa' | 'historia' | 'juego' | 'familia' | 'gobierno' | 'compañía' | 'número' | 'sistema' | 'semana' | 'empresa' | 'punto' | 'casa' | 'país' | 'historia' | 'partido' | 'información' | 'universidad' | 'ciudad' | 'equipo' | 'mercado' | 'manera' | 'nivel' | 'lugar' | 'plan' | 'proceso' | 'servicio' | 'estudio' | 'vida' | 'medio' | 'razón' | 'momento' | 'persona' | 'lugar';
+NOUN: 'perro' | 'perra' | 'perros' | 'perras' | 'gato' | 'gata' | 'gatos' | 'gatas' | 'tiempo' | 'persona' | 'año' | 'día' | 'manera' | 'país' | 'vida' | 'mano' | 'parte' | 'caso' | 'grupo' | 'problema' | 'hecho' | 'sistema' | 'lugar' | 'trabajo' | 'manera' | 'programa' | 'historia' | 'juego' | 'familia' | 'gobierno' | 'compañía' | 'número' | 'sistema' | 'semana' | 'empresa' | 'punto' | 'casa' | 'país' | 'historia' | 'partido' | 'información' | 'universidad' | 'ciudad' | 'equipo' | 'mercado' | 'manera' | 'nivel' | 'lugar' | 'plan' | 'proceso' | 'servicio' | 'estudio' | 'vida' | 'medio' | 'razón' | 'momento' | 'persona' | 'lugar';
 
 // ADJETIVOS
 POSSESSIVE_ADJECTIVE: 'mi' | 'tu' | 'su' | 'nuestro' | 'nuestra' | 'vuestro' | 'vuestra' | 'su';
@@ -63,9 +63,9 @@ INTERROGATIVE_PRONOUN: 'quién' | 'quienes' | 'qué' | 'cuál' | 'cuáles' | 'cu
 
 // VERBOS
 PRESENT_TENSE_VERB:
-// PRIMERA PERSONA
+// PRIMERA PERSONA SINGULAR
 'soy' | 'estoy' | 'tengo' | 'hago' | 'digo' | 'voy' | 'veo' | 'sé' | 'puedo' | 'pongo' | 'quiero' | 'vengo' | 'doy' | 'parezco' | 'llevo' | 'gusto' | 'oigo' | 'pienso' | 'salgo' | 'encuentro' | 'miro' | 'como' | 'vivo' | 'siento' | 'hablo' | 'sigo' | 'creo' | 'recibo' | 'juego' | 'trabajo' | 'escribo' | 'conozco' | 'dejo' | 'comienzo' | 'necesito' | 'estudio' | 'llevo' | 'cojo' | 'abro' | 'cierro' | 'llego' | 'termino' | 'camino' | 'pregunto' | 'escucho' | 'viajo' | 'compro' | 'entiendo' | 'espero' | 'llevo' |
-// TERCERA PERSONA
+// TERCERA PERSONA SINGULAR
 'es' | 'está' | 'tiene' | 'hace' | 'dice' | 'va' | 've' | 'sabe' | 'puede' | 'pone' | 'quiere' | 'viene' | 'da' | 'parece' | 'lleva' | 'gusta' | 'oye' | 'piensa' | 'sale' | 'encuentra' | 'mira' | 'come' | 'vive' | 'siente' | 'habla' | 'sigue' | 'cree' | 'recibe' | 'juega' | 'trabaja' | 'escribe' | 'conoce' | 'deja' | 'comienza' | 'necesita' | 'estudia' | 'lleva' | 'coge' | 'abre' | 'cierra' | 'llega' | 'termina' | 'camina' | 'pregunta' | 'escucha' | 'viaja' | 'compra' | 'entiende' | 'espera' | 'lleva'
 ;
 

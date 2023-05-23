@@ -17,6 +17,7 @@ import com.compiladores.wordbridge.translator.errorhandling.WordBridgeCustomErro
 import com.compiladores.wordbridge.translator.symbolhandling.WordBridgeCustomSymbolsTable;
 import com.compiladores.wordbridge.translator.symbolhandling.WordBridgeCustomVisitor;
 import com.compiladores.wordbridge.translator.vocabulary.spanish.WordBridgeCustomSpanishDictionary;
+import com.compiladores.wordbridge.translator.vocabulary.spanish.word.Word;
 
 public class App extends JFrame {
 	
@@ -170,12 +171,12 @@ public class App extends JFrame {
 	    WordBridgeCustomSymbolsTable symbolsTable = new WordBridgeCustomSymbolsTable();
 	    
 	    // Se crea el dictionario correspondiente, se carga el diccionario en memoria y luego se crea el traductor
-	    WordBridgeCustomSpanishDictionary spanishToEnglishDictionary = new WordBridgeCustomSpanishDictionary(DICTIONARY_PATH);
+	    WordBridgeCustomSpanishDictionary<Word> spanishToEnglishDictionary = new WordBridgeCustomSpanishDictionary<>(DICTIONARY_PATH);
 	    spanishToEnglishDictionary.loadDictionary();
 	    WordBridgeCustomTranslator spanishToEnglishTranslator = new WordBridgeCustomSpanishToEnglishTranslator(spanishToEnglishDictionary);
-	    
+
     	// Se crea un WordBridgeCustomVisitor para visitar el arbol de parseo y generar el codigo de salida
-    	WordBridgeCustomVisitor visitor = new WordBridgeCustomVisitor(spanishToEnglishTranslator, symbolsTable);
+    	WordBridgeCustomVisitor visitor = new WordBridgeCustomVisitor(spanishToEnglishDictionary, spanishToEnglishTranslator, symbolsTable, errorsTable);
     	String translation = visitor.visit(tree);
     	
     	// Se muestra la tabla de simbolos en una tabla grafica
